@@ -4,11 +4,34 @@ class Padding(Scene):
     def construct(self):
         target_width = 10
 
+        # == text ===
+
+        myTemplate = TexTemplate()
+        myTemplate.add_to_preamble(r"\usepackage{mathrsfs}")
+
+        tex = Tex(
+            r"$\mathscr{L}_{\text{pad}} = \left\{ \langle x, 1^{2^{|x|^{c}}} \rangle \mid x \in \mathscr{L} \right\}$",
+            tex_template=myTemplate,
+            font_size=60,
+        )
+        tex.to_edge(UP, buff=0.5)   # << move out of the way
+
+
+
+        # === Input box (new) ===
+        x_rect = Rectangle(width=2, height=1)
+        x_rect.set_fill(GREEN, opacity=0.5)
+        x_label = Text("x", font_size=32).move_to(x_rect)
+        x_group = VGroup(x_rect, x_label)
+        x_group.to_edge(LEFT, buff=0.5)
+
+        self.play(FadeIn(x_group))
+        self.play(Write(tex))   
+
         # === Base rectangle ===
-        rect = Rectangle(width=2, height=1)
+        rect = Rectangle(width=.01, height=1)
         rect.set_fill(BLUE, opacity=0.5)
-        rect.to_edge(LEFT, buff=0)
-        rect.shift(RIGHT * 1)
+        rect.next_to(x_group, RIGHT, buff=0)   # << minimal change: attach to x
         self.play(FadeIn(rect))
 
         # === Arrow ===
@@ -30,7 +53,7 @@ class Padding(Scene):
 
         # === Updater: fill rectangle with 1s ===
         def update_ones(group):
-            group.submobjects = []  # <-- CLEAR PROPERLY
+            group.submobjects = []
 
             left = rect.get_left()
             right = rect.get_right()
@@ -49,9 +72,12 @@ class Padding(Scene):
 
         # === Updaters for arrow & label ===
         def update_arrow(arrow):
-            arrow.put_start_and_end_on(
-                rect.get_left() + DOWN*1.2,
-                rect.get_right() + DOWN*1.2,
+            arrow.become(
+                DoubleArrow(
+                    rect.get_left() + DOWN*1.2,
+                    rect.get_right() + DOWN*1.2,
+                    buff=0,
+                )
             )
 
         def update_label(label):
@@ -62,7 +88,7 @@ class Padding(Scene):
 
         # === Animate padding expansion ===
         self.play(
-            rect.animate.stretch_to_fit_width(target_width).shift(RIGHT * 4),
+            rect.animate.stretch_to_fit_width(target_width, about_point=rect.get_left()),
             run_time=2.0,
             rate_func=smooth
         )
