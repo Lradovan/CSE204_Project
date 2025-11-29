@@ -36,6 +36,22 @@ class DecidingLPad(Slide):
         line2[3].set_color(GREEN)
         line2.to_edge(DOWN, buff=0.5)
 
+        # runtime explanation for part 1
+
+        line1_rt_explanation = Tex(r"1. \quad On a single-tape TM, this procedure takes $O(n^2)$", font_size = 30)
+        line1_rt_explanation.to_edge(DOWN, buff=0.5)
+
+        # runtime explanation for part 2
+
+        line2_rt_explanation = Tex(r"2. \quad Since the running time of ",
+                                   r"M ",
+                                   r"on ",
+                                   r"x", 
+                                   r", $2^{|x|^{c}}$, is included in the input w, the runtime is $\underline{O(n)}$, where $n = |w|$.", font_size = 30)
+        line2_rt_explanation[1].set_color(YELLOW)
+        line2_rt_explanation[3].set_color(GREEN)
+        line2_rt_explanation.to_edge(DOWN, buff=0.5)
+
         tex = Tex(
             r"$w = \langle x, 1^{2^{|x|^{c}}} \rangle$",
             tex_template=myTemplate,
@@ -46,7 +62,8 @@ class DecidingLPad(Slide):
         large_rectangle = RoundedRectangle(
             width=8.0, 
             height=5.0, 
-            corner_radius=0.2
+            corner_radius=0.2,
+            color=PINK
         )
 
         top_left = large_rectangle.get_corner(UL)
@@ -66,14 +83,18 @@ class DecidingLPad(Slide):
         x_rect.set_fill(GREEN, opacity=0.5)
         x_label = Text("x", font_size=25).move_to(x_rect)
         x_group = VGroup(x_rect, x_label)
-        #x_group.to_edge(LEFT, buff=0.5)
 
         # === padding rectangle ===
         rect = Rectangle(width=4, height=.5)
         rect.set_fill(BLUE, opacity=0.5)
         rect.next_to(x_group, RIGHT, buff=0)
 
-        rect_group = VGroup(x_group, rect).move_to(ORIGIN)
+        # === count rectangle === 
+        c_rect = Rectangle(width=1, height=0.5)
+        c_rect.set_fill(TEAL, opacity=0.5)
+        c_rect.next_to(rect, RIGHT, buff=0)
+
+        rect_group = VGroup(x_group, rect, c_rect).move_to(ORIGIN)
 
         ones = VGroup(*[Text("1", font_size=25) for _ in range(7)])
         ones.arrange(RIGHT, buff=0.35)
@@ -87,18 +108,40 @@ class DecidingLPad(Slide):
         for one in ones:
             one.set_opacity(0.25)
 
-        self.play(FadeIn(rect_group), FadeIn(ones), FadeIn(pointer))
+        self.play(FadeIn(x_group), FadeIn(rect), FadeIn(ones), FadeIn(pointer))
 
         self.play(Write(line1))
 
+        counter = Integer(0).move_to(c_rect.get_center())
+        self.play(FadeIn(c_rect), FadeIn(counter))
+
         for i, one in enumerate(ones, start=1):
-            # move pointer above current '1'
 
-            self.play(pointer.animate.next_to(one, DOWN, buff=0.15), run_time=0.06)
+            # Fast hop to the next '1'
+            self.play(
+                pointer.animate.next_to(one, DOWN),
+                run_time=0.15,
+                rate_func=linear
+            )
 
-            # highlight the '1' by increasing opacity and slightly scaling up
+            # Fast drop into c_rect
+            self.play(
+                pointer.animate.next_to(c_rect, DOWN, buff=0.15),
+                run_time=0.08,
+                rate_func=linear
+            )
+
+            # highlight
             self.play(
                 one.animate.set_opacity(1.0).scale(1.05),
+                run_time=0.12
+            )
+
+            # increment counter (smooth)
+            self.play(
+                counter.animate.set_value(counter.get_value() + 1),
+                run_time=0.25,
+                rate_func=smooth
             )
 
         question = Tex(r"Does the \# of 1's $= 2^{|x|^{c}}$? If not, reject.", font_size=30, tex_template=myTemplate)
@@ -107,7 +150,13 @@ class DecidingLPad(Slide):
 
         self.next_slide()
 
-        self.play(FadeOut(rect), FadeOut(pointer), FadeOut(ones), FadeOut(line1), FadeOut(question))
+        self.play(FadeOut(line1))
+
+        self.play(Write(line1_rt_explanation))
+
+        self.next_slide()
+
+        self.play(FadeOut(rect), FadeOut(c_rect), FadeOut(counter), FadeOut(pointer), FadeOut(ones), FadeOut(line1_rt_explanation), FadeOut(question))
 
         self.play(Write(line2))
 
@@ -145,3 +194,7 @@ class DecidingLPad(Slide):
         self.play(FadeIn(arrow), FadeIn(text))
 
         self.next_slide()
+
+        self.play(FadeOut(line2))
+
+        self.play(Write(line2_rt_explanation))
