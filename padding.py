@@ -1,6 +1,7 @@
 from manim import *
+from manim_slides import Slide
 
-class Padding(Scene):
+class Padding(Slide):
     def construct(self):
         target_width = 10
 
@@ -85,6 +86,8 @@ class Padding(Scene):
         size_arrow.add_updater(update_arrow)
         size_label.add_updater(update_label)
 
+        self.next_slide()
+
         # === Animate padding expansion ===
         self.play(
             rect.animate.stretch_to_fit_width(target_width, about_point=rect.get_left()),
@@ -98,8 +101,6 @@ class Padding(Scene):
         size_arrow.remove_updater(update_arrow)
         size_label.remove_updater(update_label)
         ones_group.remove_updater(update_ones)
-
-        self.wait(1)
 
         # (2) ★ ADD "∈ L_pad" to the right of the full padded rectangle
         # (2) ∈ L_pad
@@ -117,7 +118,6 @@ class Padding(Scene):
         )
         brace_label.next_to(brace, DOWN)
 
+        self.next_slide()
         self.play(GrowFromCenter(brace))
         self.play(Write(brace_label))
-
-        self.wait(2)
