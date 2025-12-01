@@ -7,7 +7,7 @@
 
 # Parts of the Proof
 
-1. Intro - EXP != NEXP -> P != NP (TODO)
+1. Intro - EXP != NEXP -> P != NP (mostly done)
 2. Assumption that P = NP and Definition of L (TODO)
 3. Definition of L_pad (mostly done)
 4. Decidability of L using M (mostly done)

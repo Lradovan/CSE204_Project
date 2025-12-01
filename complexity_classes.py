@@ -19,6 +19,7 @@ class ComplexityClassesOverview(Slide):
 
         p_class = Tex(r"$\mathcal{P}$: Problems solvable in polynomial time", font_size=40, tex_template=myTemplate)
         p_class.set_color(BLUE)
+        p_class.next_to(title, DOWN, buff=0.3)
         classes.add(p_class)
 
         np_class = Tex(r"$\mathcal{NP}$: Problems verifiable in polynomial time", font_size=40, tex_template=myTemplate)
@@ -31,15 +32,19 @@ class ComplexityClassesOverview(Slide):
         exp_class.next_to(np_class, DOWN, buff=0.5)
         classes.add(exp_class)
 
+        nexp_class = Tex(r"$\mathcal{NEXP}$: Problems verifiable in exponential time", font_size=40, tex_template=myTemplate)
+        nexp_class.set_color(PURPLE)
+        nexp_class.next_to(exp_class, DOWN, buff=0.5)
+        classes.add(nexp_class)
+
         self.play(LaggedStartMap(Write, classes, lag_ratio=0.5))
 
         self.next_slide()
 
-        relationships = Tex(
-            r"$\mathcal{P} \subseteq \mathcal{NP} \subseteq \mathcal{EXP}$",
-            font_size=45,
-            tex_template=myTemplate
+        theorem = Tex(
+            r"Theorem: If $\mathcal{P} = \mathcal{NP}$, then $\mathcal{EXP} = \mathcal{NEXP}$",
+            font_size=40,
         )
-        relationships.next_to(classes, DOWN, buff=1)
+        theorem.next_to(classes, DOWN, buff=1)
 
-        self.play(Write(relationships))
+        self.play(Write(theorem))
