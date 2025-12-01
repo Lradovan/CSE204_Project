@@ -2,7 +2,7 @@ from manim import *
 from manim_slides import Slide
 
 
-class ComplexityClassesOverview(Slide):
+class Intro(Slide):
     def construct(self):
         myTemplate = TexTemplate()
         myTemplate.add_to_preamble(r"\usepackage{mathrsfs}")
