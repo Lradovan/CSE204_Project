@@ -9,10 +9,10 @@ class LPadInP(Slide):
 
         in_np = Tex(
             r"Since the running time of ",
-            r"M' ", 
+            r"$M'$ ", 
             r"is polynomial, and it contains a non-deterministic simulation of running ",
-            r"M ",
-            r"on x, \underline{$\mathscr{L}_{\text{pad}} \in \mathcal{NP}$}.",
+            r"$M$ ",
+            r"on $x$, \underline{$\mathscr{L}_{\text{pad}} \in \mathcal{NP}$}.",
             font_size=40,
             tex_template=myTemplate
         )

@@ -10,7 +10,7 @@ class DecidingLPad(Slide):
 
         intro = Tex(
             r"We can design an NTM ",
-            r"M' ",
+            r"$M'$ ",
             r"that decides $\mathscr{L}_{\text{pad}}$ in polynomial time", 
             tex_template=myTemplate,
             font_size=45,
@@ -29,28 +29,28 @@ class DecidingLPad(Slide):
 
         # line 2
         line2 = Tex(r"2. \quad Run ",
-                    r"M ",
+                    r"$M$ ",
                     r"on ",
-                    r"x ",
+                    r"$x$ ",
                     r"and follow the output")
         line2[1].set_color(YELLOW)
-        line2[3].set_color(GREEN)
         line2.to_edge(DOWN, buff=0.5)
 
         # runtime explanation for part 1
 
-        line1_rt_explanation = Tex(r"1. \quad On a single-tape TM, this procedure takes $O(n^2)$", font_size = 30)
+        line1_rt_explanation = Tex(r"1. \quad On a single-tape TM, this procedure takes $O(n^2)$", font_size = 35)
         line1_rt_explanation.to_edge(DOWN, buff=0.5)
 
         # runtime explanation for part 2
 
         line2_rt_explanation = Tex(r"2. \quad Since the running time of ",
-                                   r"M ",
-                                   r"on ",
-                                   r"x", 
-                                   r", $2^{|x|^{c}}$, is included in the input w, the runtime is $\underline{O(n)}$, where $n = |w|$.", font_size = 30)
+                                   r"$M$ ",
+                                   r"on $x$",
+                                   r", $2^{|x|^{c}}$, is included in the input $w$, the running time of ",
+                                   r"$M$ ",
+                                   r"in terms of $w$ is $\underline{O(n)}$.", font_size = 35)
         line2_rt_explanation[1].set_color(YELLOW)
-        line2_rt_explanation[3].set_color(GREEN)
+        line2_rt_explanation[4].set_color(YELLOW)
         line2_rt_explanation.to_edge(DOWN, buff=0.5)
 
         tex = Tex(
@@ -78,7 +78,7 @@ class DecidingLPad(Slide):
         # 2. Move text to that corner with a small margin
         machine_name.next_to(top_left, direction=DOWN+RIGHT, buff=0.1)
 
-        self.play(FadeIn(large_rectangle), Write(machine_name)) # Add the mobject to the scene
+        self.play(Write(large_rectangle), Write(machine_name)) # Add the mobject to the scene
 
         x_rect = Rectangle(width=1, height=.5)
         x_rect.set_fill(GREEN, opacity=0.5)
@@ -161,9 +161,9 @@ class DecidingLPad(Slide):
 
         self.play(Write(line2))
 
-          # --- Machine Box ---
+        # --- Machine Box ---
         machine_box = RoundedRectangle(width=3.5, height=2, corner_radius=0.2)
-        machine_label = Tex(r"NTM ", r"M", font_size=32)
+        machine_label = Tex(r"NTM ", r"$M$", font_size=32)
         machine_label[1].set_color(YELLOW)
         machine_group = VGroup(machine_box, machine_label)
         machine_group.next_to(x_group, RIGHT, buff=0.4)
@@ -177,7 +177,7 @@ class DecidingLPad(Slide):
         runtime[1].set_color(YELLOW)
         runtime.next_to(machine_group, DOWN, buff=0.5)
 
-        self.play(machine_box.animate.set_fill(BLUE, opacity=0.2), run_time=0.4)
+        self.play(machine_box.animate.set_fill(YELLOW, opacity=0.1), run_time=0.4)
 
         self.play(Write(runtime))
 

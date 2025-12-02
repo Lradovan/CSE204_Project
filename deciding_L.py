@@ -11,7 +11,7 @@ class DecidingL(Slide):
 
         tex = Tex(
         r"There is an NTM ",
-        r"M",
+        r"$M$",
         r" deciding $\mathscr{L}$ that runs in $2^{|x|^c}$ time",
         tex_template=myTemplate,
         font_size=45,
@@ -24,7 +24,7 @@ class DecidingL(Slide):
 
         # --- Machine Box ---
         machine_box = RoundedRectangle(width=3.5, height=2, corner_radius=0.2)
-        machine_label = Tex(r"NTM ", r"M", font_size=32)
+        machine_label = Tex(r"NTM ", r"$M$", font_size=32)
 
         machine_label[1].set_color(YELLOW)
         machine_group = VGroup(machine_box, machine_label)
@@ -74,7 +74,7 @@ class DecidingL(Slide):
         self.play(x_group.animate.next_to(machine_group, LEFT, buff=0.4))
 
         # Small pulse to indicate "processing"
-        self.play(machine_box.animate.set_fill(BLUE, opacity=0.2), run_time=0.4)
+        self.play(machine_box.animate.set_fill(YELLOW, opacity=0.1), run_time=0.4)
         # self.play(machine_box.animate.set_fill(opacity=0), run_time=0.4)
 
         # Show runtime
