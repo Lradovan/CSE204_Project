@@ -48,8 +48,9 @@ class Intro(Slide):
         self.next_slide()
 
         theorem = Tex(
-            r"Theorem: If $\mathcal{P} = \mathcal{NP}$, then $\mathcal{EXP} = \mathcal{NEXP}$",
+            r"Theorem: If $\mathcal{EXP} \neq \mathcal{NEXP}$, then $\mathcal{P} \neq \mathcal{NP}$",
             font_size=40,
+            tex_template=myTemplate
         )
         theorem.next_to(classes, DOWN, buff=1)
 
