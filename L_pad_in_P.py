@@ -1,6 +1,7 @@
 from manim import *
 from manim_slides import Slide
 
+# Slide number 6
 class LPadInP(Slide):
     def construct(self):
         myTemplate = TexTemplate()

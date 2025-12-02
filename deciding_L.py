@@ -1,6 +1,7 @@
 from manim import *
 from manim_slides import Slide
 
+# Slide number 4
 class DecidingL(Slide):
     def construct(self):
 

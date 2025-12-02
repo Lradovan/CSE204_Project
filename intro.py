@@ -1,7 +1,7 @@
 from manim import *
 from manim_slides import Slide
 
-
+# Slide number 1
 class Intro(Slide):
     def construct(self):
         myTemplate = TexTemplate()

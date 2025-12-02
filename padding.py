@@ -1,6 +1,7 @@
 from manim import *
 from manim_slides import Slide
 
+# Slide number 3
 class Padding(Slide):
     def construct(self):
         target_width = 10

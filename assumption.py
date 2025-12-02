@@ -1,8 +1,7 @@
 from manim import *
 from manim_slides import Slide
 
-## Start of proof:
-## Assumption that P = NP and Definition of L
+## Slide number 2
 class Assumption(Slide):
     def construct(self):
         myTemplate = TexTemplate()
