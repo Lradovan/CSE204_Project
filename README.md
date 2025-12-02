@@ -14,4 +14,4 @@
 5. Decidability of L_pad using M' (mostly done)
 6. L_pad is in NP. So L_pad is in P. (mostly done)
 7. Final construction of TM N that uses M' (TODO)
-8. Conclusion (TODO)
+8. Conclusion (mostly done)
