@@ -192,5 +192,3 @@ class TMConstruction(Slide):
         )
 
         self.play(Write(arrow), Write(text))
-
-        self.next_slide()
