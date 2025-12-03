@@ -27,7 +27,7 @@ class Intro(Slide):
         np_class.next_to(p_class, DOWN, buff=0.5)
         classes.add(np_class)
 
-        exp_class = Tex(r"$\mathcal{EXP}$: Problems solvable in exponential time",
+        exp_class = Tex(r"$\mathcal{EXP}$: Problems solvable in deterministic TM in exponential time",
                         r"\\[6pt]",
                         r"or $\bigcup_{c \in \mathbb{N}} \mathrm{DTIME}(2^{n^c})$",
                         font_size=40, tex_template=myTemplate)
@@ -35,7 +35,7 @@ class Intro(Slide):
         exp_class.next_to(np_class, DOWN, buff=0.5)
         classes.add(exp_class)
 
-        nexp_class = Tex(r"$\mathcal{NEXP}$: Problems verifiable in exponential time",
+        nexp_class = Tex(r"$\mathcal{NEXP}$: Problems solvable by a NTM in exponential time",
                          r"\\[6pt]",
                          r"or $\bigcup_{c \in \mathbb{N}} \mathrm{NTIME}(2^{n^c})$",
                          font_size=40, tex_template=myTemplate)

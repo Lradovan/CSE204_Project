@@ -11,7 +11,7 @@ class DecidingL(Slide):
 
         tex = Tex(
             r"{\raggedright "
-            r"Since $\mathscr{L}$ is in $\mathcal{NEXP}$, there exists an NTM ",
+            r"Since $\mathscr{L}$ is in $\mathcal{NEXP}$, there exists a NTM ",
             r"$M$ ",
             r"deciding $\mathscr{L}$ that runs in $2^{|x|^c}$ time."
             r"\par}",
