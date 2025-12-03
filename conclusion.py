@@ -8,12 +8,14 @@ class Conclusion(Slide):
         myTemplate.add_to_preamble(r"\usepackage{mathrsfs}")
 
         tm_explanation = Tex(
-            r"TM $N'$ decides language $\mathscr{L}$, so $N'$ is deterministic",
-            r"\\[6pt]",
-            r"and runs in polynomial time on input of length $2^{n^{c}}$",
+            r"TM ",
+            r"$N'$ ",
+            r"decides language $\mathscr{L}$ ",
+            r"and runs in poly($2^{n^{c}}$) time.",
             font_size=40,
             tex_template=myTemplate
         )
+        tm_explanation[1].set_color(TEAL)
 
         tm_explanation.to_edge(UP, buff=1)
 
@@ -21,10 +23,13 @@ class Conclusion(Slide):
         self.next_slide()
 
         tm_time = Tex(
-            r"Therefore, M runs in exponential time, which shows that $\mathscr{L} \in \mathcal{EXP}$",
+            r"Therefore, ",
+            r"$N'$ ", 
+            r"runs in exponential time, which shows that $\mathscr{L} \in \mathcal{EXP}$",
             font_size=40,
             tex_template=myTemplate
         )
+        tm_time[1].set_color(TEAL)
         tm_time.next_to(tm_explanation, DOWN, buff=1)
         
         self.play(Write(tm_time))
@@ -46,8 +51,22 @@ class Conclusion(Slide):
             tex_template=myTemplate
         )
 
-        conclusion_end.next_to(conclusion, DOWN, buff=.5)
+        conclusion_end.next_to(conclusion, DOWN, buff=1)
 
         self.play(Write(conclusion_end))
+
+        self.next_slide()
+
+        qed_box = Square(side_length=0.35, stroke_width=3)
+        qed_fill = Square(side_length=0.35, fill_opacity=0, stroke_width=0)
+
+        qed_box.to_corner(DOWN+RIGHT)
+        qed_fill.move_to(qed_box)
+
+        # Show outline
+        self.play(Create(qed_box))
+
+        # Fill it in
+        self.play(qed_fill.animate.set_fill(color=WHITE, opacity=1), run_time=0.6)
 
         
