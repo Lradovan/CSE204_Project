@@ -11,7 +11,7 @@ class Conclusion(Slide):
             r"TM ",
             r"$N'$ ",
             r"decides language $\mathscr{L}$ ",
-            r"and runs in poly($2^{n^{c}}$) time.",
+            r"and runs in poly($2^{|x|^{c}}$) time.",
             font_size=40,
             tex_template=myTemplate
         )
