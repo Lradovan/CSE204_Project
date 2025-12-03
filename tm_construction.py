@@ -1,7 +1,7 @@
 from manim import *
 from manim_slides import Slide
 
-## Slide number 2
+## Slide number 7
 class TMConstruction(Slide):
     def construct(self):
         myTemplate = TexTemplate()

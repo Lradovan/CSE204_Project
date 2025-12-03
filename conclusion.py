@@ -1,16 +1,16 @@
 from manim import *
 from manim_slides import Slide
 
-# Slide number 1
+# Slide number 8
 class Conclusion(Slide):
     def construct(self):
         myTemplate = TexTemplate()
         myTemplate.add_to_preamble(r"\usepackage{mathrsfs}")
 
         tm_explanation = Tex(
-            r"TM M decides language $\mathscr{L}$, so M is deterministic",
+            r"TM $N'$ decides language $\mathscr{L}$, so $N'$ is deterministic",
             r"\\[6pt]",
-            r"and runs in polynomial time on input of length $2^{|n|^{c}}$",
+            r"and runs in polynomial time on input of length $2^{n^{c}}$",
             font_size=40,
             tex_template=myTemplate
         )
@@ -38,3 +38,16 @@ class Conclusion(Slide):
         conclusion.next_to(tm_time, DOWN, buff=1)
 
         self.play(Write(conclusion))
+        self.next_slide()
+
+        conclusion_end = Tex(
+            r"Which proves: if $\mathcal{EXP} \neq \mathcal{NEXP}$, then $\mathcal{P} \neq \mathcal{NP}$",
+            font_size=45,
+            tex_template=myTemplate
+        )
+
+        conclusion_end.next_to(conclusion, DOWN, buff=.5)
+
+        self.play(Write(conclusion_end))
+
+        

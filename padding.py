@@ -4,11 +4,36 @@ from manim_slides import Slide
 # Slide number 3
 class Padding(Slide):
     def construct(self):
-        target_width = 10
-
-        # == text ===
         myTemplate = TexTemplate()
         myTemplate.add_to_preamble(r"\usepackage{mathrsfs}")
+        target_width = 10
+
+        # == Intro: describe the padded language before the main animation ==
+        title = Text("Padded language", font_size=48)
+        title.to_edge(UP)
+
+        intro_tex = Tex(
+            r"$\mathscr{L}_{\text{pad}} = \left\{ \langle x, 1^{2^{|x|^{c}}} \rangle \mid x \in \mathscr{L} \right\}$",
+            tex_template=myTemplate,
+            font_size=36,
+        )
+        intro_tex.next_to(title, DOWN, buff=0.4)
+
+        note = Tex(
+            r"Take $x \in \mathscr{L}$ and append $1^{2^{|x|^{c}}}$ to get an element of $\mathscr{L}_{\text{pad}}$.",
+            tex_template=myTemplate,
+            font_size=30,
+        )
+        note.next_to(intro_tex, DOWN, buff=0.3)
+
+        self.play(FadeIn(title))
+        self.play(Write(intro_tex))
+        self.play(Write(note))
+        self.next_slide()
+        # fade intro out before continuing to the main construction
+        self.play(FadeOut(title), FadeOut(intro_tex), FadeOut(note))
+
+        # == text ===
 
         tex = Tex(
             r"$\mathscr{L}_{\text{pad}} = \left\{ \langle x, 1^{2^{|x|^{c}}} \rangle \mid x \in \mathscr{L} \right\}$",
