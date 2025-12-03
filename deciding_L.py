@@ -10,17 +10,22 @@ class DecidingL(Slide):
         myTemplate.add_to_preamble(r"\usepackage{mathrsfs}")
 
         tex = Tex(
-        r"There is an NTM ",
-        r"$M$",
-        r" deciding $\mathscr{L}$ that runs in $2^{|x|^c}$ time",
-        tex_template=myTemplate,
-        font_size=45,
+            r"{\raggedright "
+            r"Since $\mathscr{L}$ is in $\mathcal{NEXP}$, there exists an NTM ",
+            r"$M$ ",
+            r"deciding $\mathscr{L}$ that runs in $2^{|x|^c}$ time."
+            r"\par}",
+            tex_template=myTemplate,
+            font_size=35,
         )
 
+        tex.align_to(LEFT)  
         tex[1].set_color(YELLOW)   # only the middle piece
 
         tex.to_edge(UP, buff=0.5)
         self.play(Write(tex))
+
+        self.next_slide()
 
         # --- Machine Box ---
         machine_box = RoundedRectangle(width=3.5, height=2, corner_radius=0.2)
@@ -46,19 +51,19 @@ class DecidingL(Slide):
 
         # --- Nondeterministic arrows *pointing outwards* ---
         arrow_yes = Arrow(
-            start=machine_group.get_right() + UP*0.2,
+            start=machine_label.get_right() + UP*0.2,
             end=yes_text.get_left(),
             buff=0.2,
             stroke_width=3
         ).set_opacity(0.4)
 
         arrow_no = Arrow(
-            start=machine_group.get_right() + DOWN*0.2,
+            start=machine_label.get_right() + DOWN*0.2,
             end=no_text.get_left(),
             buff=0.2,
             stroke_width=3
         ).set_opacity(0.4)
-
+        
         # --- Runtime ---
         runtime = Tex(r"$\text{Time}($",
                     r"$M$",
@@ -70,8 +75,17 @@ class DecidingL(Slide):
         self.play(FadeIn(machine_group))
         self.play(FadeIn(x_group))
 
-        # Move x into machine
+        # Move x next to machine
         self.play(x_group.animate.next_to(machine_group, LEFT, buff=0.4))
+
+        input_arrow = Arrow(
+            start=x_rect.get_right(),
+            end=machine_label.get_left(),
+            buff=0.2,
+            stroke_width=3
+        )
+
+        self.play(Write(input_arrow))
 
         # Small pulse to indicate "processing"
         self.play(machine_box.animate.set_fill(YELLOW, opacity=0.1), run_time=0.4)
@@ -82,10 +96,10 @@ class DecidingL(Slide):
 
         # Appear arrows + dim YES/NO outputs
         self.play(
-            FadeIn(arrow_yes),
-            FadeIn(arrow_no),
-            FadeIn(yes_text),
-            FadeIn(no_text),
+            Write(arrow_yes),
+            Write(arrow_no),
+            Write(yes_text),
+            Write(no_text),
         )
 
         # ---- Final nondeterministic choice (YES lights up) ----
