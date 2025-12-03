@@ -8,29 +8,37 @@ class TMConstruction(Slide):
         myTemplate.add_to_preamble(r"\usepackage{mathrsfs}")
 
         intro = Tex(
-            r"Since we showed $\mathscr{L}_{\text{pad}} \in \mathcal{P}$, there must be a polytime TM ",
-            r"N ",
-            r"that decides $\mathscr{L}_{\text{pad}}$",
+            r"{\raggedright "
+            r"Since we showed $\mathscr{L}_{\text{pad}} \in \mathcal{P}$, "
+            r"there must be a polytime TM $N$ "
+            r"that decides $\mathscr{L}_{\text{pad}}$."
+            r"\par}",
             font_size=38,
-            tex_template=myTemplate
+            tex_template=myTemplate,
+            substrings_to_isolate=["$N$"]
         )
 
-        intro[1].set_color(LIGHT_BROWN)
+        intro.set_color_by_tex("$N$", LIGHT_BROWN)
         intro.to_edge(UP, buff=0.5)
+
         self.play(Write(intro, duration=1))
 
         self.next_slide()
 
         construction = Tex(
-            r"Let us construct a TM ",
-            r"N' ",
-            r"that decides $\mathscr{L}$",
-            font_size=45,
-            tex_template=myTemplate
+            r"{\raggedright "
+            r"Let us construct a TM N' that decides $\mathscr{L}$, using N."
+            r"\par}",
+            tex_template=myTemplate,
+            font_size=38,
+            substrings_to_isolate=["N'", "N."]
         )
 
         construction.next_to(intro, DOWN * .7, buff=1)
-        construction[1].set_color(TEAL)
+        construction.align_to(intro, LEFT)
+
+        construction.set_color_by_tex("N'", TEAL)
+        construction.set_color_by_tex("N.", LIGHT_BROWN)
 
         self.play(Write(construction, duration=0.8))
 
@@ -175,6 +183,16 @@ class TMConstruction(Slide):
         runtime[1].set_color(LIGHT_BROWN)
         runtime.next_to(machine_group, DOWN, buff=0.5)
 
+
+        input_arrow = Arrow(
+            start=rect.get_right(),
+            end=machine_label.get_left(),
+            buff=0.2,
+            stroke_width=3
+        )
+
+        self.play(Write(input_arrow))
+
         self.play(machine_box.animate.set_fill(LIGHT_BROWN, opacity=0.1), run_time=0.4)
 
         self.play(Write(runtime))
@@ -185,7 +203,7 @@ class TMConstruction(Slide):
         text.to_edge(RIGHT)
 
         arrow = Arrow(
-            start=machine_group.get_right(),
+            start=machine_label.get_right(),
             end=text.get_left(),
             buff=0.1,
             stroke_width=3

@@ -113,6 +113,8 @@ class DecidingLPad(Slide):
 
         self.play(Write(line1))
 
+        self.next_slide()
+
         counter = Integer(0).move_to(c_rect.get_center())
         self.play(FadeIn(c_rect), FadeIn(counter))
 
@@ -177,6 +179,15 @@ class DecidingLPad(Slide):
         runtime[1].set_color(YELLOW)
         runtime.next_to(machine_group, DOWN, buff=0.5)
 
+        input_arrow = Arrow(
+            start=x_rect.get_right(),
+            end=machine_label.get_left(),
+            buff=0.2,
+            stroke_width=3
+        )
+
+        self.play(Write(input_arrow))
+
         self.play(machine_box.animate.set_fill(YELLOW, opacity=0.1), run_time=0.4)
 
         self.play(Write(runtime))
@@ -186,13 +197,13 @@ class DecidingLPad(Slide):
         text.to_edge(RIGHT)
 
         arrow = Arrow(
-            start=machine_group.get_right(),
+            start=machine_label.get_right(),
             end=text.get_left(),
             buff=0.2,
             stroke_width=3
         )
 
-        self.play(FadeIn(arrow), FadeIn(text))
+        self.play(Write(arrow), Write(text))
 
         self.next_slide()
 
