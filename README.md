@@ -1,8 +1,16 @@
+# Installing Manim:
+
+Follow these steps to install Manim: https://docs.manim.community/en/stable/installation.html 
+
+(Note: There are two different versions of Manin. The link above will explain how to download the community version of Manim, which is the version you need to view the slides.)
+
 # To View the Slides:
  
 1. `pip install -r requirements.txt`
-2. `manim-slides render padding.py`
-3. `manim-slides convert Padding slides.html --open`
+2. `manim-slides render presentation.py`
+3. `manim-slides convert Presentation slides.html --open`
+
+(Note: Rendering slides might freeze and stop loading. If this happens, press CTRL + C and try running the command again.)
 
 
 # Parts of the Proof
