@@ -17,17 +17,17 @@ class Intro(Slide):
 
         classes = VGroup()
 
-        p_class = Tex(r"$\mathcal{P}$: Problems solvable in polynomial time", font_size=40, tex_template=myTemplate)
+        p_class = Tex(r"$\mathbb{P}$: Problems solvable in polynomial time", font_size=40, tex_template=myTemplate)
         p_class.set_color(BLUE)
         p_class.next_to(title, DOWN, buff=0.3)
         classes.add(p_class)
 
-        np_class = Tex(r"$\mathcal{NP}$: Problems verifiable in polynomial time", font_size=40, tex_template=myTemplate)
+        np_class = Tex(r"$\mathbb{NP}$: Problems verifiable in polynomial time", font_size=40, tex_template=myTemplate)
         np_class.set_color(ORANGE)
         np_class.next_to(p_class, DOWN, buff=0.5)
         classes.add(np_class)
 
-        exp_class = Tex(r"$\mathcal{EXP}$: Problems solvable in deterministic TM in exponential time",
+        exp_class = Tex(r"$\mathbb{EXP}$: Problems solvable in deterministic TM in exponential time",
                         r"\\[6pt]",
                         r"or $\bigcup_{c \in \mathbb{N}} \mathrm{DTIME}(2^{n^c})$",
                         font_size=40, tex_template=myTemplate)
@@ -35,7 +35,7 @@ class Intro(Slide):
         exp_class.next_to(np_class, DOWN, buff=0.5)
         classes.add(exp_class)
 
-        nexp_class = Tex(r"$\mathcal{NEXP}$: Problems solvable by a NTM in exponential time",
+        nexp_class = Tex(r"$\mathbb{NEXP}$: Problems solvable by a NTM in exponential time",
                          r"\\[6pt]",
                          r"or $\bigcup_{c \in \mathbb{N}} \mathrm{NTIME}(2^{n^c})$",
                          font_size=40, tex_template=myTemplate)
@@ -48,7 +48,7 @@ class Intro(Slide):
         self.next_slide()
 
         theorem = Tex(
-            r"Theorem: If $\mathcal{EXP} \neq \mathcal{NEXP}$, then $\mathcal{P} \neq \mathcal{NP}$",
+            r"Theorem: If $\mathbb{EXP} \neq \mathbb{NEXP}$, then $\mathbb{P} \neq \mathbb{NP}$",
             font_size=40,
             tex_template=myTemplate
         )

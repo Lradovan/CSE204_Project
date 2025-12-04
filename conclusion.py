@@ -25,7 +25,7 @@ class Conclusion(Slide):
         tm_time = Tex(
             r"Therefore, ",
             r"$N'$ ", 
-            r"runs in exponential time, which shows that $\mathscr{L} \in \mathcal{EXP}$",
+            r"runs in exponential time, which shows that $\mathscr{L} \in \mathbb{EXP}$.",
             font_size=40,
             tex_template=myTemplate
         )
@@ -36,7 +36,7 @@ class Conclusion(Slide):
         self.next_slide()
 
         conclusion = Tex(
-            r"Thus, we have shown that if $\mathcal{P} = \mathcal{NP}$, then $\mathcal{EXP} = \mathcal{NEXP}$.",
+            r"Thus, we have shown that if $\mathbb{P} = \mathbb{NP}$, then $\mathbb{EXP} = \mathbb{NEXP}$.",
             font_size=45,
             tex_template=myTemplate
         )
@@ -46,7 +46,7 @@ class Conclusion(Slide):
         self.next_slide()
 
         conclusion_end = Tex(
-            r"Which proves: if $\mathcal{EXP} \neq \mathcal{NEXP}$, then $\mathcal{P} \neq \mathcal{NP}$",
+            r"Which proves: if $\mathbb{EXP} \neq \mathbb{NEXP}$, then $\mathbb{P} \neq \mathbb{NP}$.",
             font_size=45,
             tex_template=myTemplate
         )

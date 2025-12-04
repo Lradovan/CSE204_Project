@@ -12,7 +12,7 @@ class LPadInP(Slide):
             r"$M'$ ", 
             r"is polynomial, and it contains a non-deterministic simulation of running ",
             r"$M$ ",
-            r"on $x$, \underline{$\mathscr{L}_{\text{pad}} \in \mathcal{NP}$}.",
+            r"on $x$, \underline{$\mathscr{L}_{\text{pad}} \in \mathbb{NP}$}.",
             font_size=40,
             tex_template=myTemplate
         )
@@ -23,7 +23,7 @@ class LPadInP(Slide):
         self.play(Write(in_np))
 
         assumption = Tex(
-            r"We assume $\mathcal{P} = \mathcal{NP}$",
+            r"We assume $\mathbb{P} = \mathbb{NP}$.",
             font_size=40,
             tex_template=myTemplate
         )
@@ -34,7 +34,7 @@ class LPadInP(Slide):
         self.play(Write(assumption))
 
         in_p = Tex(
-            r"Therefore, \underline{$\mathscr{L}_{\text{pad}} \in \mathcal{P}$",
+            r"Therefore, \underline{$\mathscr{L}_{\text{pad}} \in \mathbb{P}$.",
             font_size=40,
             tex_template=myTemplate
         )
@@ -46,7 +46,7 @@ class LPadInP(Slide):
         self.play(Write(in_p))
 
         l_in_exp = Tex(
-            r"We can use this to show that $\mathscr{L} \in \mathcal{EXP}$",
+            r"We can use this to show that $\mathscr{L} \in \mathbb{EXP}$.",
             font_size=40,
             tex_template=myTemplate
         )

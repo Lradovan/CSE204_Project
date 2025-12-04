@@ -17,7 +17,7 @@ class Assumption(Slide):
         self.play(Write(title, duration=1))
 
         assumption = Tex(
-            r"Assume $\mathcal{P} = \mathcal{NP}$.",
+            r"Assume $\mathbb{P} = \mathbb{NP}$.",
             font_size=45,
             tex_template=myTemplate
         )
@@ -26,7 +26,7 @@ class Assumption(Slide):
         self.play(Write(assumption, duration=0.8))
 
         definition = Tex(
-            r"Let $\mathscr{L}$ be a language in $\mathcal{NEXP}$.",
+            r"Let $\mathscr{L}$ be a language in $\mathbb{NEXP}$.",
             font_size=45,
             tex_template=myTemplate
         )
@@ -37,7 +37,7 @@ class Assumption(Slide):
         ## Explain end goal of proof
 
         goal = Tex(
-            r"We will show that $\mathscr{L}$ is also in $\mathcal{EXP}$.",
+            r"We will show that $\mathscr{L}$ is also in $\mathbb{EXP}$.",
             font_size=45,
             tex_template=myTemplate
         )
