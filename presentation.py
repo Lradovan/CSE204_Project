@@ -2,6 +2,7 @@ from manim import *
 from manim_slides import Slide
 
 # import all of the invididual slides
+from title import Title
 from intro import Intro
 from assumption import Assumption
 from padding import Padding
@@ -13,6 +14,11 @@ from conclusion import Conclusion
 
 class Presentation(Slide):
     def construct(self):
+
+        # (0) title
+        Title.construct(self)
+        self.next_slide()
+        self.clear()
 
         # (1) intro
         Intro.construct(self)
