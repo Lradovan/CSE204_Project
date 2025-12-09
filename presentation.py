@@ -4,6 +4,8 @@ Date: December 2025
 Description: Main file used to generate all slides
 """
 
+from manim import *
+from manim_slides import Slide
 # import all of the invididual slides
 from title import Title
 from intro import Intro
