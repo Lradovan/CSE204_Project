@@ -1,3 +1,9 @@
+"""
+Authors: Ethan Makishima and Lucas Radovan
+Date: December 2025
+Description: First slide - complexity class and theorem overview
+"""
+
 from manim import *
 from manim_slides import Slide
 

@@ -1,5 +1,8 @@
-from manim import *
-from manim_slides import Slide
+"""
+Authors: Ethan Makishima and Lucas Radovan
+Date: December 2025
+Description: Main file used to generate all slides
+"""
 
 # import all of the invididual slides
 from title import Title

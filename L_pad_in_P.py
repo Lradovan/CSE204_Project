@@ -1,3 +1,9 @@
+"""
+Authors: Ethan Makishima and Lucas Radovan
+Date: December 2025
+Description: Sixth slide - L pad is in P
+"""
+
 from manim import *
 from manim_slides import Slide
 

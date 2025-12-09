@@ -1,3 +1,9 @@
+"""
+Authors: Ethan Makishima and Lucas Radovan
+Date: December 2025
+Description: Fifth slide - shows that L_pad can be decided using L's NTM
+"""
+
 from manim import *
 from manim_slides import Slide
 

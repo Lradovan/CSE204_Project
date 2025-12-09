@@ -1,3 +1,9 @@
+"""
+Authors: Ethan Makishima and Lucas Radovan
+Date: December 2025
+Description: Second slide - assumption that P = NP and definiton of L
+"""
+
 from manim import *
 from manim_slides import Slide
 

@@ -1,3 +1,9 @@
+"""
+Authors: Ethan Makishima and Lucas Radovan
+Date: December 2025
+Description: Helper file to store the padding animation used in the third and seventh slides
+"""
+
 from manim import *
 
 def create_padding_animation(scene, x_height, x_width, x_font_size, one_font_size, size_arrow_mult):

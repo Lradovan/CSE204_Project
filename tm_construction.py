@@ -1,3 +1,9 @@
+"""
+Authors: Ethan Makishima and Lucas Radovan
+Date: December 2025
+Description: Seventh slide - construction of the TM to decide L
+"""
+
 from manim import *
 from manim_slides import Slide
 from helpers import create_padding_animation

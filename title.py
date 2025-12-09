@@ -1,3 +1,9 @@
+"""
+Authors: Ethan Makishima and Lucas Radovan
+Date: December 2025
+Description: Zeroth slide - title and names
+"""
+
 from manim import *
 from manim_slides import Slide
 

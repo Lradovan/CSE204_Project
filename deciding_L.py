@@ -1,3 +1,9 @@
+"""
+Authors: Ethan Makishima and Lucas Radovan
+Date: December 2025
+Description: Fourth slide - explanation for the decidability of L
+"""
+
 from manim import *
 from manim_slides import Slide
 
